@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Личный сайт студента GeekBrains</title>
+  <link href="style.css" rel="stylesheet">
+  <script type="text/javascript">
+  
+	var answer = parseInt(Math.random()*100);
+	var tryCount = 0;
+	var maxTryCount = 20;
+	
+	function readInt(){
+		var number = document.getElementById("userAnswerwer").value;
+		return parseInt(number);
+	}
+	
+	function write(text){
+		document.getElementById("info1").innerHTML = text;
+	}
+	
+	
+	
+	function generatPassword(){
+		
+		var userAnswerwer= readInt();
+		var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		var  password = "";
+		
+		for (var i=0; i< userAnswerwer; i++){
+			var random = parseInt(Math.random()*61);
+			password += charset.substring(random,random+1);
+		}
+		
+		write("Ваш пароль: " + password);
+				
+	}
+	
+  </script>
+ </head>
+ <body>
+<div class="content">
+
+	<div class="header">
+		<a href='index.php'>Главная</a>
+		<a href='puzzle.php'>Загадки</a>
+		<a href='guess.html'>Угадайка</a>
+		<a href='random.html'>Генератор паролей</a>
+	</div>
+
+<div class="contentWrap">	
+	<div class="center">
+		<h1>Генератор случайных паролей</h1>
+			
+			<div class="box">
+				<p id="info">Из скольки символов должен состоять пароль?</p>
+				<input type="text" id="userAnswerwer">
+				<p id="info1"></p>
+				<br>
+				<a href="#" onclick="generatPassword();" id="button">Сгенерировать</a>
+			
+			</div>
+	</div>	
+	<div class="footer">
+		Copyright &copy; ZEBRA
+	</div>
+</div>	
+	
+</div>
+ </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Личный сайт студента GeekBrains</title>
+  <link href="style.css" rel="stylesheet">
+  <script type="text/javascript">
+  
+	var answer = parseInt(Math.random()*100);
+	var tryCount = 0;
+	var maxTryCount = 20;
+	
+	function readInt(){
+		var number = document.getElementById("userAnswerwer").value;
+		return parseInt(number);
+	}
+	
+	function write(text){
+		document.getElementById("info").innerHTML = text;
+	}
+	
+	function hide(id){
+		document.getElementById(id).style.display = "none";
+	}
+	
+	
+	function guess(){
+		
+		tryCount++;	
+		var userAnswerwer= readInt();
+		var player ="";
+
+		if (userAnswerwer == answer){
+			if (tryCount%2 == 0)
+				player = "второй игрок";
+			else
+				player = "первый игрок";
+			write("<b>Поздравляем! Вы угадали!</b><br>Выиграл "+ player);
+			hide("button");
+			hide("userAnswerwer");
+		}	
+		else if (tryCount >= maxTryCount){
+			write("Победителя нет.<br>Правильный ответ:" + answer);
+			hide("button");
+			hide("userAnswerwer");
+		}	
+		else if	(userAnswerwer > answer){
+			if (tryCount%2 == 0)
+				player = "первый игрок";
+			else
+				player = "второй игрок";
+			write("Вы ввели слишком большое число.<br>Попробуйте снова. Введите число от 0 до 100<br>Ходит "+ player);
+			}
+		else if	(userAnswerwer < answer){
+			if (tryCount%2 == 0)
+				player = "первый игрок";
+			else
+				player = "второй игрок";
+			write("Вы ввели слишком маленькаое число.<br>Попробуйте снова. Введите число от 0 до 100<br>Ходит "+ player);
+			
+			}	
+			
+				
+	}
+	
+  </script>
+ </head>
+ <body>
+<div class="content">
+
+	<div class="header">
+		<a href='index.php'>Главная</a>
+		<a href='puzzle.php'>Загадки</a>
+		<a href='guess.html'>Угадайка</a>
+		<a href='random.html'>Генератор паролей</a>
+	</div>
+
+<div class="contentWrap">	
+	<div class="center">
+		<h1>Игра угадайка</h1>
+			
+			<div class="box">
+				<p id="info">Угадайте число от 0 до 100.<br>Очерередь первого игрока</p>
+				<input type="text" id="userAnswerwer">
+				<br>
+				<a href="#" onclick="guess();" id="button">Начать</a>
+			</div>
+	</div>	
+	<div class="footer">
+		Copyright &copy; ZEBRA
+	</div>
+</div>	
+	
+</div>
+ </body>
+</html>
